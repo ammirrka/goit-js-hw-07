@@ -8,12 +8,17 @@
   <title>Task 6</title>
   <link rel="stylesheet" href="./css/common.css" />
   <style>
+    body {
+      font-family: "Montserrat", sans-serif;
+    }
+
     #controls {
       padding: 32px;
       background: #f6f6fe;
       display: flex;
       gap: 16px;
     }
+
     input {
       border: 1px solid #808080;
       border-radius: 8px;
@@ -26,6 +31,15 @@
       color: #2e2f42;
       text-align: center;
       display: inline-block;
+    }
+
+    button {
+      cursor: pointer;
+      transition: .5s;
+    }
+
+    button:hover {
+      border: 1px solid #000;
     }
 
     .first-button {
