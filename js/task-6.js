@@ -25,14 +25,16 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   function createBoxes(amount) {
-    boxes.innerHTML = '';
+    const fragment = document.createDocumentFragment();
     for (let i = 0; i < amount; i++) {
       const box = document.createElement('div');
       box.style.width = `${30 + i * 10}px`;
       box.style.height = `${30 + i * 10}px`;
       box.style.backgroundColor = getRandomHexColor();
-      boxes.appendChild(box);
+      fragment.appendChild(box);
     }
+    boxes.innerHTML = '';
+    boxes.appendChild(fragment);
   }
 
   function destroyBoxes() {
