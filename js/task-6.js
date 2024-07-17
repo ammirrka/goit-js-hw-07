@@ -4,24 +4,35 @@ function getRandomHexColor() {
     .padStart(6, 0)}`;
 }
 
+const controls = document.querySelector('#controls');
+const input = controls.querySelector('input');
+const createBtn = controls.querySelector('[data-create]');
+const destroyBtn = controls.querySelector('[data-destroy]');
 const container = document.querySelector('#boxes');
+
 function createBoxes(amount) {
+  destroyBoxes();
   let size = 30;
-  for (let i = 0; i <= amount; i++) {
-    const div = document.createElement('div');
-    container.insertAdjacentElement('beforeend', div);
-    div.style.width += `${size}px`;
-    div.style.height += `${size}px`;
-    div.style.backgroundColor = getRandomHexColor();
+  let boxesHTML = '';
+
+  for (let i = 0; i < amount; i++) {
+    boxesHTML += `<div class="box" style="width: ${size}px; height: ${size}px; background-color: ${getRandomHexColor()};"></div>`;
     size += 10;
   }
+
+  container.innerHTML = boxesHTML;
 }
 
-const input = document.querySelector('input');
-const createBtn = document.querySelector('[data-create]');
+function destroyBoxes() {
+  container.innerHTML = '';
+}
 
 createBtn.addEventListener('click', () => {
-  input.value <= 100 && input.value >= 1
-    ? createBoxes(input.value)
-    : alert('Please enter a valid number');
+  const amount = Number(input.value);
+  if (amount >= 1 && amount <= 100) {
+    createBoxes(amount);
+    input.value = '';
+  }
 });
+
+destroyBtn.addEventListener('click', destroyBoxes);
