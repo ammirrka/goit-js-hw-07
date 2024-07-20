@@ -57,4 +57,5 @@ button {
   display: flex;
   gap: 44px;
   padding: 32px 28px 62px 32px;
+  flex-wrap: wrap;
 }
